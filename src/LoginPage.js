@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LandingPage from "./LandingPage"
+import LandingPage from "./TelExtensionPage"
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 class LoginPage extends React.Component {
@@ -41,7 +41,7 @@ class LoginPage extends React.Component {
     //If password is incorrect, don't go further
     if (this.state.users.userPasswords[index] === passwordValue) {
       console.log("Redirect syntax is getting called");
-      return <Redirect to="/landingpage" />;
+      return this.props.history.push('/telextension');;
     }
     else { //if password is invalid
       window.alert("Invalid Password"); return;
@@ -51,15 +51,19 @@ class LoginPage extends React.Component {
 
   render() {
     return (
+      <Route>
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Enter username" value={this.state.userNameValue} onChange={this.changeUserNameValue} />
+          <label htmlFor="username">Enter Name </label>
+          <input id = "username" type="text" placeholder="Enter username" value={this.state.userNameValue} onChange={this.changeUserNameValue} />
           <br />
-          <input type="password" placeholder="Enter password" value={this.state.passwordValue} onChange={this.changePasswordValue} />
+          <label htmlFor="password">Enter Password </label>
+          <input id="password" type="password" placeholder="Enter password" value={this.state.passwordValue} onChange={this.changePasswordValue} />
           <br />
           <button>Login</button>
         </form>
       </div>
+      </Route >
     )
   }
 }

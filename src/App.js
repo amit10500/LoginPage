@@ -1,17 +1,22 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import LoginPage from "./LoginPage";
-import LandingPage from "./LandingPage";
+import TelExtensionPage from "./TelExtensionPage";
+import BusinessPage from "./BusinessPage";
 
 function App() {
   return (
     <Router>
       <div>
-        <Route path="/" exact component={LoginPage} />
-        <Route path="/landingpage" exact component={LandingPage} />
+        <Switch>
+          <Route path="/" exact component={LoginPage} />
+          <Route path="/telextension" exact component={TelExtensionPage} />
+          <Route path="/business" exact component={BusinessPage} />
+        </Switch>
+
       </div>
     </Router>
 
