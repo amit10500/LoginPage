@@ -24,7 +24,6 @@ class LoginPage extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("I am being called");
     const { userNameValue, passwordValue } = this.state;
 
     //If username or password field is empty, don't go furthur
@@ -32,7 +31,6 @@ class LoginPage extends React.Component {
 
     const index = this.state.users.userNames.indexOf(userNameValue);
 
-    console.log("index is " + index);
     // If username doesn't exist, don't go further
     if (index === -1) {
       window.alert("Invalid UserName"); return;
@@ -40,7 +38,6 @@ class LoginPage extends React.Component {
 
     //If password is incorrect, don't go further
     if (this.state.users.userPasswords[index] === passwordValue) {
-      console.log("Redirect syntax is getting called");
       return this.props.history.push('/telextension');;
     }
     else { //if password is invalid
